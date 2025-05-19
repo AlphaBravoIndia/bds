@@ -1,14 +1,14 @@
 import type { ComponentProps } from "react"
 import { Badge } from "~/components/common/badge"
-import { Box } from "~/components/common/box"
 import { Button } from "~/components/common/button"
+import { Card } from "~/components/common/card"
 import { ExternalLink } from "~/components/web/external-link"
 import { Container } from "~/components/web/ui/container"
 import { config } from "~/config"
 import { findAd } from "~/server/web/ads/queries"
 import { cx } from "~/utils/cva"
 
-export const AdBanner = async ({ className, ...props }: ComponentProps<typeof Container>) => {
+export const AdBanner = async ({ className, ...props }: ComponentProps<typeof Card>) => {
   if (!config.ads.enabled) {
     return null
   }
@@ -20,10 +20,10 @@ export const AdBanner = async ({ className, ...props }: ComponentProps<typeof Co
   }
 
   return (
-    <Box hover focus>
-      <Container
+    <Container asChild>
+      <Card
         className={cx(
-          "group/button relative -top-px z-50 flex items-center justify-between gap-3 py-2 bg-card hover:bg-accent lg:rounded-b-lg",
+          "-top-px z-50 flex-row items-center gap-3 pt-2 pb-2.5 rounded-t-none max-lg:rounded-b-none",
           className,
         )}
         asChild
@@ -60,7 +60,7 @@ export const AdBanner = async ({ className, ...props }: ComponentProps<typeof Co
             <span>Learn More</span>
           </Button>
         </ExternalLink>
-      </Container>
-    </Box>
+      </Card>
+    </Container>
   )
 }

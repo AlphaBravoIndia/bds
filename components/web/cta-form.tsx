@@ -19,7 +19,7 @@ type InputProps = ComponentProps<typeof Input>
 
 type CTAFormProps = ComponentProps<"form"> & {
   placeholder?: string
-  size?: InputProps["size"]
+  size?: Extract<InputProps["size"], "md" | "lg">
   buttonProps?: ButtonProps
 }
 
@@ -64,7 +64,7 @@ export const CTAForm = ({
         />
 
         <Box focusWithin>
-          <div className="flex w-full rounded-lg overflow-clip">
+          <div className="flex w-full rounded-lg">
             <FormField
               control={form.control}
               name="value"
@@ -73,7 +73,6 @@ export const CTAForm = ({
                   <Input
                     type="email"
                     placeholder={placeholder}
-                    required
                     size={size}
                     className="flex-1 min-w-0 border-0 focus-visible:ring-transparent"
                     data-1p-ignore
