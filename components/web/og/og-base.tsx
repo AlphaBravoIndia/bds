@@ -17,53 +17,56 @@ export const OgBase = ({ faviconUrl, name, description, children }: OgBaseProps)
         width: "100%",
         display: "flex",
         justifyContent: "center",
-        backgroundColor: "#FAFAFA",
+        backgroundColor: "#fafafa",
+        color: "#1F1F1F",
         fontFamily: "Geist",
       }}
     >
+      <LogoSymbol
+        style={{
+          height: "36em",
+          width: "36em",
+          position: "absolute",
+          top: "-25%",
+          right: "-10%",
+          transform: "rotate(12deg)",
+          opacity: 0.05,
+        }}
+      />
+
       <div
         style={{
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
           gap: "3rem",
-          margin: "2.5rem auto",
-          height: "77.5%",
-          width: "90%",
+          padding: "3.5rem 4rem",
+          backgroundImage: "linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.05))",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <p
-            style={{
-              display: "flex",
-              gap: "24",
-              fontSize: "3.2rem",
-              fontFamily: "GeistBold",
-            }}
-          >
-            {faviconUrl && (
-              <img
-                src={faviconUrl}
-                alt=""
-                width={64}
-                height={64}
-                style={{ borderRadius: "0.5rem" }}
-              />
-            )}
+        <div style={{ display: "flex", alignItems: "center", gap: "24" }}>
+          {faviconUrl && (
+            <img
+              src={faviconUrl}
+              alt=""
+              width={92}
+              height={92}
+              style={{ borderRadius: "0.5rem" }}
+            />
+          )}
 
-            {name}
-          </p>
+          <p style={{ fontSize: "3.4rem", fontFamily: "GeistBold", lineHeight: "1.05" }}>{name}</p>
 
           {children}
         </div>
 
         <p
           style={{
-            color: "#52525B",
             fontSize: "2.8rem",
-            lineHeight: "1.25",
+            lineHeight: "1.33",
             letterSpacing: "-0.015em",
             marginTop: "-1rem",
+            opacity: 0.75,
           }}
         >
           {getExcerpt(description, 125)}
@@ -73,15 +76,24 @@ export const OgBase = ({ faviconUrl, name, description, children }: OgBaseProps)
           style={{
             marginTop: "auto",
             display: "flex",
-            alignItems: "center",
+            flexDirection: "column",
             gap: "12",
             fontSize: "2rem",
           }}
         >
-          <LogoSymbol style={{ height: "2.5rem", width: "2.5rem" }} />
-          <span>
-            {config.site.name} — {config.site.tagline}
-          </span>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "12",
+              fontSize: "2rem",
+            }}
+          >
+            <LogoSymbol style={{ height: "1.25em", width: "1.25em" }} />
+            <span>{config.site.name}</span>
+          </div>
+
+          <span style={{ opacity: 0.5, fontSize: "1.6rem" }}>{config.site.tagline}</span>
         </div>
       </div>
     </div>
