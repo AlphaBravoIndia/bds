@@ -29,6 +29,7 @@ type RelationSelectorProps<T> = {
   selectedIds: string[]
   prompt?: string
   maxSuggestions?: number
+  suggestedIds?: string[]
   mapFunction?: (relation: T) => Relation
   sortFunction?: (a: T, b: T) => number
   setSelectedIds: (selectedIds: string[]) => void
@@ -39,12 +40,14 @@ export const RelationSelector = <T extends Relation>({
   selectedIds,
   prompt,
   maxSuggestions = 5,
+  suggestedIds,
   mapFunction,
   sortFunction,
   setSelectedIds,
 }: RelationSelectorProps<T>) => {
   const relations = use(promise)
-  const [suggestedRelations, setSuggestedRelations] = useState<T[]>([])
+  const suggestRelations = suggestedIds ? relations.filter(r => suggestedIds.includes(r.id)) : []
+  const [suggestedRelations, setSuggestedRelations] = useState<T[]>(suggestRelations)
   const selectedRelations = relations?.filter(({ id }) => selectedIds.includes(id))
 
   const { complete } = useCompletion({
@@ -53,7 +56,7 @@ export const RelationSelector = <T extends Relation>({
 
     onFinish: (_, completion) => {
       if (completion) {
-        const cats = completion
+        const suggestions = completion
           .split(",")
           .map(name => name.trim())
           .map(name => relations.find(c => c.name === name) || null)
@@ -61,7 +64,7 @@ export const RelationSelector = <T extends Relation>({
           .filter(isTruthy)
           .slice(0, maxSuggestions)
 
-        setSuggestedRelations(cats)
+        setSuggestedRelations(suggestions)
       }
     },
   })
@@ -105,17 +108,19 @@ export const RelationSelector = <T extends Relation>({
               </Badge>
             }
           >
-            <Separator orientation="vertical" />
+            <Separator orientation="vertical" className="self-stretch" />
 
-            <Stack size="xs">
-              {!selectedRelations.length && (
-                <span className="font-normal text-muted-foreground">Select</span>
-              )}
+            <AnimatedContainer height transition={{ ease: "linear", duration: 0.1 }}>
+              <Stack size="xs">
+                {!selectedRelations.length && (
+                  <span className="font-normal text-muted-foreground">Select</span>
+                )}
 
-              {getDisplayRelations(selectedRelations).map(relation => (
-                <Badge key={relation.id}>{relation.name}</Badge>
-              ))}
-            </Stack>
+                {getDisplayRelations(selectedRelations).map(relation => (
+                  <Badge key={relation.id}>{relation.name}</Badge>
+                ))}
+              </Stack>
+            </AnimatedContainer>
           </Button>
         </PopoverTrigger>
 
@@ -180,11 +185,11 @@ export const RelationSelector = <T extends Relation>({
         </PopoverContent>
       </Popover>
 
-      {prompt && (
+      {(suggestedRelations.length || prompt) && (
         <AnimatedContainer height transition={{ ease: "linear", duration: 0.1 }}>
           {!!suggestedRelations.length && (
-            <Stack size="sm" className="items-start">
-              <Tooltip tooltip="AI-suggested relations based on the content of the link. Click a suggested relation to add it.">
+            <Stack direction="column" className="items-start">
+              <Tooltip tooltip="AI-suggested relations. Click on them to add to the selection.">
                 <span className="mt-px text-xs text-muted-foreground">Suggested:</span>
               </Tooltip>
 
