@@ -6,7 +6,7 @@ import Providers from "~/app/(web)/providers"
 import { AdBanner } from "~/components/web/ads/ad-banner"
 import { Bottom } from "~/components/web/bottom"
 import { Footer } from "~/components/web/footer"
-import { Header } from "~/components/web/header"
+import { Header, HeaderBackdrop } from "~/components/web/header"
 import { Container } from "~/components/web/ui/container"
 import { env } from "~/env"
 import { getServerSession } from "~/lib/auth"
@@ -23,6 +23,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
         </Suspense>
 
         <Header session={session} />
+        <HeaderBackdrop />
 
         <Container asChild>
           <main className="flex flex-col grow py-8 gap-8 md:gap-10 md:py-10 lg:gap-12 lg:py-12">
