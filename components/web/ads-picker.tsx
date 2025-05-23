@@ -13,6 +13,7 @@ import { createStripeAdsCheckout } from "~/actions/stripe"
 import { AnimatedContainer } from "~/components/common/animated-container"
 import { Badge } from "~/components/common/badge"
 import { Button } from "~/components/common/button"
+import { Note } from "~/components/common/note"
 import { Stack } from "~/components/common/stack"
 import { Tooltip } from "~/components/common/tooltip"
 import { AdsCalendar } from "~/components/web/ads-calendar"
@@ -65,8 +66,8 @@ export const AdsPicker = ({ className, ads, ...props }: AdsCalendarProps) => {
   }
 
   return (
-    <div className={cx("flex flex-col w-full border divide-y rounded-md", className)} {...props}>
-      <div className="flex flex-col w-full sm:flex-row sm:divide-x max-sm:divide-y">
+    <div className={cx("flex flex-col min-w-md border divide-y rounded-md", className)} {...props}>
+      <div className="flex flex-wrap overflow-clip">
         {config.ads.adSpots.map(adSpot => (
           <AdsCalendar
             key={adSpot.type}
@@ -75,6 +76,7 @@ export const AdsPicker = ({ className, ads, ...props }: AdsCalendarProps) => {
             price={price}
             selections={selections}
             updateSelection={updateSelection}
+            className="border-l border-t -ml-px -mt-px"
           />
         ))}
       </div>
@@ -116,16 +118,12 @@ export const AdsPicker = ({ className, ads, ...props }: AdsCalendarProps) => {
         )}
       </AnimatedContainer>
 
-      <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground text-center p-4 sm:justify-between sm:text-start">
+      <Stack className="text-center p-4 sm:justify-between sm:text-start">
         {price ? (
           <>
             <Stack size="sm" className="mr-auto">
-              Total:
-              <Price
-                price={price.discountedPrice}
-                fullPrice={price.totalPrice}
-                priceClassName="text-foreground text-base"
-              />
+              <Note>Total:</Note>
+              <Price price={price.discountedPrice} fullPrice={price.totalPrice} />
             </Stack>
 
             {price.discountPercentage > 0 && (
@@ -133,7 +131,7 @@ export const AdsPicker = ({ className, ads, ...props }: AdsCalendarProps) => {
                 <Badge
                   size="lg"
                   variant="outline"
-                  className="-my-1 text-green-700/90 dark:text-green-300/90"
+                  className="-my-1.5 text-green-700/90 dark:text-green-300/90"
                 >
                   {price.discountPercentage}% off
                 </Badge>
@@ -141,12 +139,12 @@ export const AdsPicker = ({ className, ads, ...props }: AdsCalendarProps) => {
             )}
           </>
         ) : (
-          <p>Please select dates for at least one ad type</p>
+          <Note>Please select dates for at least one ad type</Note>
         )}
 
         <Button
           variant="fancy"
-          size="lg"
+          size="md"
           disabled={!hasSelections || isPending}
           isPending={isPending}
           className="max-sm:w-full sm:-my-2"
@@ -154,7 +152,7 @@ export const AdsPicker = ({ className, ads, ...props }: AdsCalendarProps) => {
         >
           Purchase Now
         </Button>
-      </div>
+      </Stack>
     </div>
   )
 }

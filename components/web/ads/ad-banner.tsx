@@ -32,20 +32,20 @@ export const AdBanner = async ({ className, ...props }: ComponentProps<typeof Ca
         <ExternalLink
           href={ad.websiteUrl}
           eventName="click_ad"
-          eventProps={{ url: ad.websiteUrl, type: ad.type }}
+          eventProps={{ url: ad.websiteUrl, type: ad.type, source: "banner" }}
         >
           <Badge variant="outline" className="max-sm:order-last">
             Ad
           </Badge>
 
-          <div className="text-xs leading-tight text-secondary-foreground mr-auto md:text-sm">
+          <div className="text-xs leading-tight text-secondary-foreground mr-auto sm:text-sm">
             {ad.faviconUrl && (
               <img
                 src={ad.faviconUrl}
                 alt={ad.name}
                 width={32}
                 height={32}
-                className="inline-flex align-text-top mr-1 size-3.5 md:size-4"
+                className="inline-flex align-text-top mr-1 size-3.5 sm:size-4"
               />
             )}
             <strong className="font-medium text-foreground">{ad.name}</strong> — {ad.description}

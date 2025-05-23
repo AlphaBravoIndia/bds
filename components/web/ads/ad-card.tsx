@@ -1,6 +1,6 @@
-import type { AdType } from "@prisma/client"
+import { isExternalUrl } from "@curiousleaf/utils"
+import type { AdType, Prisma } from "@prisma/client"
 import { ArrowUpRightIcon } from "lucide-react"
-import { Slot } from "radix-ui"
 import type { ComponentProps } from "react"
 import { Badge } from "~/components/common/badge"
 import { Button } from "~/components/common/button"
@@ -9,6 +9,7 @@ import {
   CardBadges,
   CardDescription,
   CardHeader,
+  CardIcon,
   type CardProps,
 } from "~/components/common/card"
 import { H4 } from "~/components/common/heading"
@@ -17,21 +18,25 @@ import { ExternalLink } from "~/components/web/external-link"
 import { Favicon, FaviconImage } from "~/components/web/ui/favicon"
 import { LogoSymbol } from "~/components/web/ui/logo-symbol"
 import { config } from "~/config"
+import type { AdOne } from "~/server/web/ads/payloads"
 import { findAd } from "~/server/web/ads/queries"
 import { cx } from "~/utils/cva"
 
 type AdCardProps = CardProps & {
   rel?: string
   type: AdType
+  where?: Prisma.AdWhereInput
+  fallbackAd?: Partial<AdOne>
 }
 
-const AdCard = async ({ className, type, ...props }: AdCardProps) => {
+const AdCard = async ({ className, type, where, fallbackAd, ...props }: AdCardProps) => {
   if (!config.ads.enabled) {
     return null
   }
 
-  const ad = (await findAd({ where: { type } })) ?? config.ads.defaultAd
-  const isDefault = !ad.websiteUrl.startsWith("http")
+  const defaultAd = { ...config.ads.defaultAd, ...fallbackAd }
+  const ad = (await findAd({ where: { type, ...where } })) ?? defaultAd
+  const isDefault = !isExternalUrl(ad.websiteUrl)
 
   return (
     <Card className={cx("group/button", className)} asChild {...props}>
@@ -39,16 +44,14 @@ const AdCard = async ({ className, type, ...props }: AdCardProps) => {
         href={ad.websiteUrl}
         target={isDefault ? "_self" : undefined}
         eventName="click_ad"
-        eventProps={{ url: ad.websiteUrl, type: ad.type }}
+        eventProps={{ url: ad.websiteUrl, type: ad.type, source: "card" }}
       >
-        {!isDefault && (
-          <CardBadges>
-            <Badge variant="outline">Ad</Badge>
-          </CardBadges>
-        )}
+        <CardBadges>
+          <Badge variant="outline">Ad</Badge>
+        </CardBadges>
 
         <CardHeader wrap={false}>
-          <Favicon src={ad.faviconUrl} title={ad.name} />
+          <Favicon src={ad.faviconUrl ?? "/favicon.png"} title={ad.name} />
 
           <H4 as="strong" className="truncate">
             {ad.name}
@@ -57,15 +60,13 @@ const AdCard = async ({ className, type, ...props }: AdCardProps) => {
 
         <CardDescription className="mb-auto line-clamp-4">{ad.description}</CardDescription>
 
-        <Button size="md" className="pointer-events-none" suffix={<ArrowUpRightIcon />} asChild>
+        <Button className="w-full pointer-events-none" suffix={<ArrowUpRightIcon />} asChild>
           <span>{isDefault ? "Advertise" : `Visit ${ad.name}`}</span>
         </Button>
 
-        <div className="absolute inset-0 overflow-clip pointer-events-none">
-          <Slot.Root className="absolute -bottom-2/5 -right-1/4 -z-10 size-60 opacity-3.5 rotate-12 transition group-hover/button:rotate-17">
-            {isDefault ? <LogoSymbol /> : <FaviconImage src={ad.faviconUrl} title={ad.name} />}
-          </Slot.Root>
-        </div>
+        <CardIcon>
+          {isDefault ? <LogoSymbol /> : <FaviconImage src={ad.faviconUrl} title={ad.name} />}
+        </CardIcon>
       </ExternalLink>
     </Card>
   )
