@@ -15,7 +15,7 @@ const Separator = ({
       decorative={decorative}
       orientation={orientation}
       className={cx(
-        "shrink-0 bg-border",
+        "shrink-0 self-stretch bg-border",
         orientation === "horizontal" ? "h-px w-full" : "h-full w-px",
         className,
       )}

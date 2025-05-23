@@ -141,9 +141,10 @@ export const Search = () => {
     onSuccess: ({ data }) => {
       setResults(data)
 
-      if (Object.values(data).some(arr => arr.length > 0)) {
-        listRef.current?.scrollTo({ top: 0, behavior: "smooth" })
-        query.length > 2 && posthog.capture("search", { query: query.toLowerCase() })
+      const q = query.toLowerCase().trim()
+
+      if (q.length > 1) {
+        posthog.capture("search", { query: q })
       }
     },
 
@@ -157,6 +158,7 @@ export const Search = () => {
     const performSearch = async () => {
       if (hasQuery) {
         execute({ query })
+        listRef.current?.scrollTo({ top: 0, behavior: "smooth" })
       } else {
         setResults(undefined)
       }

@@ -126,7 +126,7 @@ export function TagForm({ children, className, title, tag, tools, ...props }: Ta
               <RelationSelector
                 promise={tools}
                 selectedIds={field.value ?? []}
-                onChange={field.onChange}
+                setSelectedIds={field.onChange}
               />
             </FormItem>
           )}

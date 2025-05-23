@@ -159,7 +159,7 @@ export function CategoryForm({
               <RelationSelector
                 promise={tools}
                 selectedIds={field.value ?? []}
-                onChange={field.onChange}
+                setSelectedIds={field.onChange}
               />
             </FormItem>
           )}

@@ -477,7 +477,7 @@ export function ToolForm({
               <RelationSelector
                 promise={categories}
                 selectedIds={field.value ?? []}
-                onChange={field.onChange}
+                setSelectedIds={field.onChange}
                 prompt={
                   name &&
                   description &&

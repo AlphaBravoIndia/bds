@@ -61,7 +61,7 @@ const CardBg = ({ className, ...props }: ComponentProps<"div">) => {
   return (
     <div
       className={cx(
-        "absolute -top-px -inset-x-px -z-10 h-1/3 rounded-lg overflow-clip pointer-events-none",
+        "absolute -top-px -inset-x-px -z-10 h-24 rounded-lg overflow-clip pointer-events-none",
         className,
       )}
       {...props}
@@ -71,13 +71,30 @@ const CardBg = ({ className, ...props }: ComponentProps<"div">) => {
   )
 }
 
+const CardIcon = ({ children, className, ...props }: ComponentProps<"div">) => {
+  return (
+    <div
+      className={cx(
+        "absolute inset-1 overflow-clip rounded-sm opacity-10 pointer-events-none",
+        className,
+      )}
+      {...props}
+    >
+      <Slot.Root className="absolute -top-20 -right-20 -z-10 size-60 rotate-12 mask-b-from-25 mask-l-from-25">
+        {children}
+      </Slot.Root>
+    </div>
+  )
+}
+
 export {
   Card,
-  CardBg,
-  CardBadges,
-  CardDescription,
-  CardFooter,
   CardHeader,
+  CardFooter,
+  CardDescription,
+  CardBadges,
+  CardBg,
+  CardIcon,
   cardVariants,
   type CardProps,
 }
