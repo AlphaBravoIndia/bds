@@ -75,7 +75,7 @@ const CardIcon = ({ children, className, ...props }: ComponentProps<"div">) => {
   return (
     <div
       className={cx(
-        "absolute inset-1 overflow-clip rounded-sm opacity-10 pointer-events-none",
+        "absolute inset-0 overflow-clip rounded-sm opacity-10 pointer-events-none",
         className,
       )}
       {...props}

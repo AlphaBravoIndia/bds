@@ -97,7 +97,7 @@ export default async function ToolPage(props: PageProps) {
             <Button suffix={<ArrowUpRightIcon />} asChild>
               <ExternalLink
                 href={tool.websiteUrl}
-                rel={tool.isFeatured ? "noopener noreferrer" : undefined}
+                doFollow={tool.isFeatured}
                 eventName="click_website"
                 eventProps={{ url: tool.websiteUrl }}
               >
