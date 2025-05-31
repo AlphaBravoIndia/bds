@@ -31,7 +31,7 @@ const getMetadata = (category: CategoryOne): Metadata => {
 
   return {
     title,
-    description: `A curated collection of the best ${title}.`,
+    description: `A curated collection of the best ${title.toLowerCase()} design systems, UI kits, and component libraries.`,
   }
 }
 
