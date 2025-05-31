@@ -111,11 +111,11 @@ export const Search = () => {
           path: "/admin/categories/new",
           shortcut: true,
         },
-        {
-          label: "New Tag",
-          path: "/admin/tags/new",
-          shortcut: true,
-        },
+        // {
+        //   label: "New Tag",
+        //   path: "/admin/tags/new",
+        //   shortcut: true,
+        // },
       ],
     })
 
@@ -128,9 +128,9 @@ export const Search = () => {
     commandSections.push({
       name: "Quick Links",
       items: [
-        { label: "Tools", path: "/" },
+        { label: "Design Systems", path: "/" },
         { label: "Categories", path: "/categories" },
-        { label: "Tags", path: "/tags" },
+        // { label: "Tags", path: "/tags" },
       ],
     })
   }
@@ -193,7 +193,7 @@ export const Search = () => {
           ))}
 
         <SearchResults
-          name="Tools"
+          name="Design Systems"
           items={results?.tools}
           onItemSelect={navigateTo}
           getHref={({ slug }) => `${isAdminPath ? "/admin/tools" : ""}/${slug}`}
@@ -214,13 +214,13 @@ export const Search = () => {
           renderItemDisplay={({ name }) => name}
         />
 
-        <SearchResults
+        {/* <SearchResults
           name="Tags"
           items={results?.tags}
           onItemSelect={navigateTo}
           getHref={({ slug }) => `${isAdminPath ? "/admin" : ""}/tags/${slug}`}
           renderItemDisplay={({ name }) => name}
-        />
+        /> */}
       </CommandList>
     </CommandDialog>
   )

@@ -24,9 +24,12 @@ export default async function AdvertisePage() {
       <Intro alignment="center">
         <IntroTitle>{`${metadata.title}`}</IntroTitle>
         <IntroDescription>{metadata.description}</IntroDescription>
+        <Button className="mt-4 min-w-40" asChild>
+          <ExternalLink href={`mailto:${config.site.email}`}>Contact us</ExternalLink>
+        </Button>
       </Intro>
 
-      <AdsPicker ads={ads} className="w-full max-w-2xl mx-auto" />
+      {/* <AdsPicker ads={ads} className="w-full max-w-2xl mx-auto" /> */}
 
       {/* <Testimonial
         quote="After advertising on this platform, we saw a 38% increase in qualified leads and 2.4x ROI within the first month. The targeted audience was exactly what our business needed. Highly recommended!"
@@ -39,7 +42,7 @@ export default async function AdvertisePage() {
 
       {/* <Stats className="my-4" /> */}
 
-      <hr />
+      {/* <hr />
 
       <Intro alignment="center" className="md:my-4 lg:my-8">
         <IntroTitle size="h2" as="h3">
@@ -53,7 +56,7 @@ export default async function AdvertisePage() {
         <Button className="mt-4 min-w-40" asChild>
           <ExternalLink href={`mailto:${config.site.email}`}>Contact us</ExternalLink>
         </Button>
-      </Intro>
+      </Intro> */}
     </>
   )
 }

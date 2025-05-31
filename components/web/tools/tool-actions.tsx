@@ -36,7 +36,7 @@ export const ToolActions = ({ tool, children, className, ...props }: ToolActions
         </Button>
       )}
 
-      {!tool.ownerId && (
+      {/* {!tool.ownerId && (
         <Button
           size="md"
           variant="secondary"
@@ -46,7 +46,7 @@ export const ToolActions = ({ tool, children, className, ...props }: ToolActions
         >
           Claim
         </Button>
-      )}
+      )} */}
 
       <Tooltip tooltip="Send a report/suggestion">
         <Button

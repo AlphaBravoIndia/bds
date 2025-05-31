@@ -78,14 +78,14 @@ export const Footer = ({ children, className, hideCTA, ...props }: FooterProps) 
 
           <NavLink href="/">Design Systems</NavLink>
           <NavLink href="/categories">Categories</NavLink>
-          <NavLink href="/tags">Tags</NavLink>
-          <NavLink href="/blog">Blog</NavLink>
+          {/* <NavLink href="/tags">Tags</NavLink> */}
+          {/* <NavLink href="/blog">Blog</NavLink> */}
         </Stack>
 
         <Stack direction="column" className="text-sm/normal md:col-span-3">
           <H6 as="strong">Quick Links:</H6>
 
-          <NavLink href="/submit">Submit</NavLink>
+          {/* <NavLink href="/submit">Submit</NavLink> */}
           <NavLink href="/about">About Us</NavLink>
           <NavLink href="/advertise">Advertise</NavLink>
         </Stack>

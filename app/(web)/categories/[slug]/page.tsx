@@ -27,7 +27,7 @@ const getCategory = cache(async ({ params }: PageProps) => {
 })
 
 const getMetadata = (category: CategoryOne): Metadata => {
-  const title = category.label || `${category.name} Tools`
+  const title = category.label || `${category.name}`
 
   return {
     title,
@@ -71,7 +71,7 @@ export default async function CategoryPage(props: PageProps) {
       />
 
       <Intro>
-        <IntroTitle>{`${title}`}</IntroTitle>
+        <IntroTitle>{`Best ${title} Design Systems`}</IntroTitle>
         <IntroDescription className="max-w-3xl">{description}</IntroDescription>
       </Intro>
 

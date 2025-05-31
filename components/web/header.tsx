@@ -90,11 +90,11 @@ const Header = ({ children, className, session, ...props }: HeaderProps) => {
                     <GalleryHorizontalEndIcon className="shrink-0 size-4 opacity-75" /> Categories
                   </NavLink>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
+                {/* <DropdownMenuItem asChild>
                   <NavLink href="/tags">
                     <TagIcon className="shrink-0 size-4 opacity-75" /> Tags
                   </NavLink>
-                </DropdownMenuItem>
+                </DropdownMenuItem> */}
               </DropdownMenuContent>
             </DropdownMenu>
 
@@ -107,11 +107,11 @@ const Header = ({ children, className, session, ...props }: HeaderProps) => {
               <SearchIcon className="size-4" />
             </Button>
 
-            <Button size="sm" variant="secondary" asChild>
+            {/* <Button size="sm" variant="secondary" asChild>
               <Link href="/submit">Submit</Link>
             </Button>
 
-            <UserMenu session={session} />
+            <UserMenu session={session} /> */}
           </Stack>
         </div>
 
@@ -130,9 +130,9 @@ const Header = ({ children, className, session, ...props }: HeaderProps) => {
           <NavLink href="/tags" className="text-base">
             Tags
           </NavLink>
-          <NavLink href="/submit" className="text-base">
+          {/* <NavLink href="/submit" className="text-base">
             Submit
-          </NavLink>
+          </NavLink> */}
           <NavLink href="/advertise" className="text-base">
             Advertise
           </NavLink>
