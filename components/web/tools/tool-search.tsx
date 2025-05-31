@@ -27,7 +27,7 @@ export const ToolSearch = ({ className, placeholder, ...props }: ToolSearchProps
           size="lg"
           value={filters.q || ""}
           onChange={e => updateFilters({ q: e.target.value })}
-          placeholder={isLoading ? "Loading..." : placeholder || "Search tools..."}
+          placeholder={isLoading ? "Loading..." : placeholder || "Search..."}
           className="w-full truncate px-10"
         />
       </div>

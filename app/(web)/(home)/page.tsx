@@ -17,9 +17,9 @@ export default function Home(props: PageProps) {
     <>
       <section className="flex flex-col gap-y-6 w-full mb-6">
         <Intro alignment="center">
-          <IntroTitle className="max-w-180 lg:text-5xl/[1.1]!">{config.site.tagline}</IntroTitle>
+          <IntroTitle className="max-w-180 lg:text-5xl/[1.1]!">{config.site.name}</IntroTitle>
 
-          <IntroDescription className="lg:mt-2">{config.site.description}</IntroDescription>
+          <IntroDescription className="lg:mt-2">{config.site.tagline}</IntroDescription>
 
           <Suspense fallback={<CountBadgeSkeleton />}>
             <CountBadge />

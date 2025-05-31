@@ -11,7 +11,7 @@ import { findAds } from "~/server/web/ads/queries"
 
 export const metadata: Metadata = {
   title: "Advertise",
-  description: `Promote your business or software on ${config.site.name} and reach a wide audience of software enthusiasts.`,
+  description: `Promote your business or design system on ${config.site.name} and reach a wide audience of product designers.`,
   openGraph: { ...metadataConfig.openGraph, url: "/advertise" },
   alternates: { ...metadataConfig.alternates, canonical: "/advertise" },
 }
@@ -28,16 +28,16 @@ export default async function AdvertisePage() {
 
       <AdsPicker ads={ads} className="w-full max-w-2xl mx-auto" />
 
-      <Testimonial
+      {/* <Testimonial
         quote="After advertising on this platform, we saw a 38% increase in qualified leads and 2.4x ROI within the first month. The targeted audience was exactly what our business needed. Highly recommended!"
         author={{
           name: "Piotr Kulpinski",
           image: "/authors/piotrkulpinski.webp",
           title: "Founder of Dirstarter",
         }}
-      />
+      /> */}
 
-      <Stats className="my-4" />
+      {/* <Stats className="my-4" /> */}
 
       <hr />
 

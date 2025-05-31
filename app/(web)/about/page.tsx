@@ -7,7 +7,7 @@ import { metadataConfig } from "~/config/metadata"
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: `${config.site.name} is a community driven list of tools and resources for developers.`,
+  description: `${config.site.name} is a community-driven list of design systems.`,
   openGraph: { ...metadataConfig.openGraph, url: "/about" },
   alternates: { ...metadataConfig.alternates, canonical: "/about" },
 }
@@ -27,13 +27,12 @@ export default function AboutPage() {
           <Link href="/" title={config.site.tagline}>
             {config.site.name}
           </Link>{" "}
-          is a community driven list of <strong>tools and resources for developers</strong>. The
-          goal of the site is to be your first stop when researching for a new tool or resource to
-          help you grow your business. It will help you find alternatives and reviews of the
-          products you already use.
+          is a community-driven list of <strong>design systems</strong>. The goal of the site is to
+          be your first stop when researching design systems to help you grow your business. It will
+          help you find alternatives and reviews of the design systems you already use.
         </p>
 
-        <h2>About the Author</h2>
+        {/* <h2>About the Author</h2>
 
         <p>
           I'm a software developer and entrepreneur. I've been building web applications for over 15
@@ -51,7 +50,7 @@ export default function AboutPage() {
           <a href={config.links.author} target="_blank" rel="noreferrer">
             Piotr Kulpinski
           </a>
-        </p>
+        </p> */}
       </Prose>
     </>
   )

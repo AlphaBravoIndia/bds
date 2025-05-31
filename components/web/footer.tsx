@@ -35,7 +35,7 @@ export const Footer = ({ children, className, hideCTA, ...props }: FooterProps) 
             </H5>
 
             <Note className="-mt-2 px-0.5 first:mt-0">
-              Join {formatNumber(5000, "standard")}+ other members and get updates straight to your
+              Get updates straight to your
               inbox.
             </Note>
 
@@ -65,18 +65,18 @@ export const Footer = ({ children, className, hideCTA, ...props }: FooterProps) 
               </NavLink>
             </Tooltip>
 
-            <Tooltip tooltip="View source code">
+            {/* <Tooltip tooltip="View source code">
               <NavLink href={config.links.github} target="_blank" rel="nofollow noreferrer">
                 <BrandGitHubIcon className="size-[1.44em] stroke-[1.25]" />
               </NavLink>
-            </Tooltip>
+            </Tooltip> */}
           </Stack>
         </Stack>
 
         <Stack direction="column" className="text-sm/normal md:col-span-3 md:col-start-8">
           <H6 as="strong">Browse:</H6>
 
-          <NavLink href="/">Tools</NavLink>
+          <NavLink href="/">Design Systems</NavLink>
           <NavLink href="/categories">Categories</NavLink>
           <NavLink href="/tags">Tags</NavLink>
           <NavLink href="/blog">Blog</NavLink>
@@ -91,7 +91,7 @@ export const Footer = ({ children, className, hideCTA, ...props }: FooterProps) 
         </Stack>
       </div>
 
-      <Stack size="sm" className="w-full">
+      {/* <Stack size="sm" className="w-full">
         <Note as="span">Built with</Note>
 
         <ExternalLink
@@ -109,7 +109,7 @@ export const Footer = ({ children, className, hideCTA, ...props }: FooterProps) 
           </svg>
           Dirstarter
         </ExternalLink>
-      </Stack>
+      </Stack> */}
 
       {children}
     </footer>

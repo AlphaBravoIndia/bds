@@ -21,7 +21,7 @@ export const adsConfig = {
     {
       label: "Listing Ad",
       type: "Tools",
-      description: "Visible on the every tool listing page",
+      description: "Visible on the every listing page",
       price: 15,
       preview: "https://share.cleanshot.com/7CFqSw0b",
     },
@@ -39,7 +39,7 @@ export const adsConfig = {
     type: "All",
     websiteUrl: "/advertise",
     name: "Advertise with us",
-    description: "Reach our audience of professional directory owners and boost your sales.",
+    description: "Reach our audience of product designers and boost your sales.",
     faviconUrl: "/favicon.png",
   } satisfies AdOne,
 }

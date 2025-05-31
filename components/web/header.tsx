@@ -82,7 +82,7 @@ const Header = ({ children, className, session, ...props }: HeaderProps) => {
               <DropdownMenuContent align="start">
                 <DropdownMenuItem asChild>
                   <NavLink href="/?sort=publishedAt.desc">
-                    <CalendarDaysIcon className="shrink-0 size-4 opacity-75" /> Latest tools
+                    <CalendarDaysIcon className="shrink-0 size-4 opacity-75" /> Latest
                   </NavLink>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>

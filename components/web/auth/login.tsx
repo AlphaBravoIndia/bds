@@ -10,14 +10,14 @@ export const Login = () => {
     <Stack direction="column" className="items-stretch w-full">
       <LoginForm />
 
-      <Note className="flex items-center justify-center gap-3 my-2 before:flex-1 before:border-t after:flex-1 after:border-t">
+      {/* <Note className="flex items-center justify-center gap-3 my-2 before:flex-1 before:border-t after:flex-1 after:border-t">
         or
       </Note>
 
       <LoginButton
         provider="google"
         suffix={<Image src={googleIcon} alt="Google" className="size-4" unoptimized />}
-      />
+      /> */}
     </Stack>
   )
 }
