@@ -8,11 +8,11 @@ export const metadataConfig: Metadata = {
     siteName: siteConfig.name,
     locale: "en_US",
     type: "website",
-    images: { url: `${siteConfig.url}/opengraph.png`, width: 1200, height: 630 },
+    images: { url: `https://bestdesignsystems.s3.us-east-1.amazonaws.com/tools/bDMflOql6wr4/screenshot.webp?v=1748852106025`, width: 1200, height: 630 },
   },
   twitter: {
-    site: "@dirstarter",
-    creator: "@piotrkulpinski",
+    // site: "@bestdesignsystems",
+    creator: "@abityastunggal",
     card: "summary_large_image",
   },
   alternates: {
