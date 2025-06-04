@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   devIndicators: false,
 
   experimental: {
-    ppr: false,
+    ppr: true,
     useCache: true,
 
     optimizePackageImports: [
